@@ -46,14 +46,14 @@ const data = {
     {
       label: "Dataset 1",
       data: labels.map(() => 5),
-      borderColor: "rgb(255, 99, 132)",
-      backgroundColor: "rgba(255, 99, 132, 0.5)",
+      borderColor:'rgba(177, 116, 15, 1)',
+      backgroundColor: 'rgba(177, 116, 15, 1)',
     },
     {
       label: "Dataset 2",
       data: labels.map(() => 5),
-      borderColor: "rgb(53, 162, 235)",
-      backgroundColor: "rgba(53, 162, 235, 0.5)",
+      borderColor: 'rgba(125, 175, 33, 1)',
+      backgroundColor: 'rgba(125, 175, 33, 1)',
     },
   ],
 };
@@ -66,7 +66,7 @@ export default function Graph() {
         gap={3}
         p={"10px"}
         direction={"column"}
-        bg={"gray.100"}
+        bg={'rgba(231, 245, 204, 1)'}
         w={"50%"}
         borderRadius={"md"}
       >
@@ -75,5 +75,8 @@ export default function Graph() {
     </>
   );
 }
+
+/////////////////
+
 
 /////////////////
