@@ -12,6 +12,8 @@ const mainTableSchema = new Schema({
 });
 
 const MainTable =
-  mongoose.models.maintable || mongoose.model("maintable", mainTableSchema);
+  mongoose.models.Table1 || mongoose.model("Table1", mainTableSchema);
 
 export default MainTable;
+
+////"año","volumen_produccion (ton)","valor_produccion (mil M)"
