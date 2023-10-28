@@ -11,26 +11,40 @@ export default function Home() {
   const [loadedTables, setLoadedTables] = useState<ITable[]>([]);
 
   //states to store chatgpt response
-  const [selectedTable, setSelectedTable] = useState<ITable | null>(null);
+  const [selectedTable, setSelectedTable] = useState<string | null>(null);
   const [col1, setCol1] = useState<string | null>(null);
   const [col2, setCol2] = useState<string | null>(null);
 
+  const [mainTable, setMainTable] = useState<any>(null);
+
+  async function getTable() {
+    const res = await fetch("/api/main-table");
+    const table = await res.json();
+    setMainTable(table);
+  }
+
   //for testting
   useEffect(() => {
-    setSelectedTable(loadedTables[0]);
-    setCol1(loadedTables[0]?.cols[0]);
-    setCol2(loadedTables[0]?.cols[1]);
-  }, [loadedTables]);
+    getTable();
+  }, []);
+
+  const db = {
+    comparison_table: mainTable,
+  };
 
   return (
     <>
       <Flex direction={"column"} h="100vh" p={"20px"}>
         <Tables loadedTables={loadedTables} setLoadedTables={setLoadedTables} />
         <Flex h={"100%"} gap={3} mt={"10px"}>
-          <QuestionBox />
+          <QuestionBox
+            setSelectedTable={setSelectedTable}
+            setCol1={setCol1}
+            setCol2={setCol2}
+          />
 
           {selectedTable && col1 && col2 ? (
-            <Graph table={selectedTable} col1={col1} col2={col2} />
+            <Graph table={db[selectedTable]} col1={col1} col2={col2} />
           ) : (
             <Flex
               borderWidth={"5px"}

@@ -9,7 +9,7 @@ export default function Graph({
   col1,
   col2,
 }: {
-  table: ITable;
+  table: any;
   col1: string;
   col2: string;
 }) {
