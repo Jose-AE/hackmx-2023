@@ -19,13 +19,28 @@ export default function Home() {
   const [mainTable, setMainTable] = useState<any>(null);
   const [table2, setTable2] = useState<any>(null);
 
+  function sortByDate(a: any, b: any) {
+    // Extract year and month from the date strings
+    const [yearA, monthA] = a.date.split("/");
+    const [yearB, monthB] = b.date.split("/");
+
+    // Compare years
+    if (yearA !== yearB) {
+      return parseInt(yearA) - parseInt(yearB);
+    }
+
+    // If years are the same, compare months
+    return parseInt(monthA) - parseInt(monthB);
+  }
+
   async function getTable() {
     const res = await fetch("/api/main-table");
-    const table = await res.json();
+    let table = await res.json();
+    table = table.sort(sortByDate);
 
     const res2 = await fetch("/api/tabla-2");
     let table2 = await res2.json();
-    table2 = table2.sort((a: any, b: any) => a["date"] - b["date"]);
+    table2 = table2.sort(sortByDate);
     setMainTable(table);
     setTable2(table2);
   }
@@ -34,6 +49,7 @@ export default function Home() {
   useEffect(() => {
     getTable();
   }, []);
+  console.log(mainTable);
 
   const db = {
     comparison_table: mainTable,
