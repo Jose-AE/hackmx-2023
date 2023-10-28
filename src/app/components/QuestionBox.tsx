@@ -4,6 +4,8 @@ import axios from "axios";
 import IApiResponse from "@/Interfaces/IApiResponse";
 import { Button } from "@chakra-ui/react";
 
+import { useToast } from "@chakra-ui/react";
+
 const MyComponent: React.FC<{
   setSelectedTable: any;
   setCol1: any;
@@ -13,6 +15,8 @@ const MyComponent: React.FC<{
   const [message, setMessage] = useState("");
   const [response, setResponse] = useState<IApiResponse>();
   const [requestLoading, setRequestLoading] = useState(false);
+
+  const toast = useToast();
 
   const handleRequest = async () => {
     try {
@@ -27,6 +31,13 @@ const MyComponent: React.FC<{
       console.log(content);
       setRequestLoading(false);
     } catch (error) {
+      setRequestLoading(false);
+      toast({
+        title: "No se tienen los datos nesecarios para contestar esta pregunta",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
       console.error("Error al realizar la solicitud a la API:", error);
     }
   };
