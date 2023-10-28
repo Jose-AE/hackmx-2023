@@ -20,7 +20,9 @@ import { BiPlusCircle } from "react-icons/bi";
 
 function TableInfo() {
   return (
-    <Card flex="0 0 auto" m={"10px"}>
+    
+    <Card flex="0 0 auto" m={"10px"}  style={{ backgroundColor: 'rgba(125, 175, 33, 1)', color: 'black' }}
+    >
       <CardHeader pb={"0"}>
         <Heading size="md">TABLE_NAME</Heading>
       </CardHeader>
@@ -46,11 +48,12 @@ function TableInfo() {
 export default function Tables() {
   return (
     <>
+    <img src="https://png.pngtree.com/background/20210715/original/pngtree-green-simple-avocado-background-picture-image_1290601.jpg" alt="Descripción de la imagen" />
       <Flex direction={"column"}>
         <Button
           leftIcon={<BiPlusCircle />}
           w={"150px"}
-          colorScheme="green"
+          color="rgba(96, 153, 62, 1)          "
           mb={"10px"}
         >
           Add Table
@@ -58,7 +61,7 @@ export default function Tables() {
         <Flex
           borderWidth={"5px"}
           direction={"row"}
-          bg={"gray.100"}
+          bg="rgba(150, 98, 13, 1)"
           borderRadius={"md"}
           h={"200px"}
           w={"100%"}
