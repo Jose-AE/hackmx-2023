@@ -42,9 +42,9 @@ export default function Home() {
 
   return (
     <>
-      <Flex direction={"column"} h="100vh" p={"20px"}>
-        <Tables loadedTables={loadedTables} setLoadedTables={setLoadedTables} />
-        <Flex h={"100%"} gap={3} mt={"10px"}>
+      <Flex direction={"column"} p={"20px"}>
+        <Tables />
+        <Flex gap={3} mt={"5px"} direction="column" alignItems={"center"}>
           <QuestionBox
             setSelectedTable={setSelectedTable}
             setCol1={setCol1}
@@ -61,6 +61,7 @@ export default function Home() {
             />
           ) : (
             <Flex
+              height={"500px"}
               borderWidth={"5px"}
               gap={3}
               p={"10px"}
