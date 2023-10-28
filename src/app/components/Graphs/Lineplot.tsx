@@ -56,7 +56,7 @@ export function Lineplot({
       {
         label: `${col2} a través del tiempo`,
         data: table.map((item: any) => parseFloat(item[col2])),
-        borderColor: "rgb(255, 99, 132)",
+        borderColor: "rgb(158, 85, 54)",
         backgroundColor: "rgba(255, 99, 132, 0.5)",
       },
     ],
