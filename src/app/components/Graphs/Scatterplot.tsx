@@ -9,6 +9,7 @@ import {
   Legend,
 } from "chart.js";
 import { Scatter } from "react-chartjs-2";
+import IMainTable from "@/Interfaces/IMainTable";
 
 ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend);
 
@@ -33,7 +34,7 @@ export default function Scatterplot({
     datasets: [
       {
         label: `${col1} vs ${col2}`,
-        data: table.map((item) => ({
+        data: table.map((item: any) => ({
           x: parseFloat(item[col1]),
           y: parseFloat(item[col2]),
         })),

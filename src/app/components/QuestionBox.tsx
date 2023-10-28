@@ -7,7 +7,8 @@ const MyComponent: React.FC<{
   setSelectedTable: any;
   setCol1: any;
   setCol2: any;
-}> = ({ setSelectedTable, setCol1, setCol2 }) => {
+  setPlotType: any;
+}> = ({ setSelectedTable, setCol1, setCol2, setPlotType }) => {
   const [message, setMessage] = useState("");
   const [response, setResponse] = useState<IApiResponse>();
 
@@ -18,6 +19,7 @@ const MyComponent: React.FC<{
       setSelectedTable(content.table);
       setCol1(content.col1.name);
       setCol2(content.col2.name);
+      setPlotType(content.plot_type);
       setResponse(apiResponse.data);
       console.log(content);
     } catch (error) {

@@ -24,10 +24,10 @@ comparison_table: This table is used for comparison across different variables a
 	- exportaciones_miles_dolares: amount of money (in million USD) exported of avocado from Mexico to US (TYPE: NUMERICAL)
 	- evento_violencia: determines if a violent crime related to drug dealers occurred in the month (TYPE: CATEGORICAL)
 	- precio_promedio: average price (in USD) of avocado (TYPE: NUMERICAL)
-	- volumen_total: total number of avocados sold (TYPE: NUMERICAL)
+	- total_vendido_US: total number of avocados sold (TYPE: NUMERICAL)
 
 aguacate_mexico: This table contains yearly data of avocado only in Mexican territory. It has the following columns:
-	- año: year of observation (TYPE: DATE)
+	- date: year of observation (TYPE: DATE)
 	- volumen_produccion: amount of tons of avocado produced in Mexico (TYPE: NUMERICAL)
 	- valor_produccion: amount of value obtained from yearly avocado production in Mexico (TYPE: NUMERICAL)
 
@@ -36,8 +36,8 @@ You will receive a question regarding data from the database. You first need to 
 the two columns from the table that are the most appropriate to generate a visualization as an answer to the question. Next, you will suggest one of the four following types of visualizations:
 
   - line_plot: suggest if one of the columns if of TYPE date
-  - box_plot: suggest if one of the columns is TYPE categorical and the other TYPE numerical
-  - scatter_plot: suggest if and only if both columns are TYPE numerical
+  - bar_plot: suggest if one of the columns is TYPE categorical and the other TYPE numerical or viceversa
+  - scatter_plot: suggest if and only if one column is TYPE numerical and the other is TYPE numerical
 
 Then you will respond with a JSON structure with the following format:
 

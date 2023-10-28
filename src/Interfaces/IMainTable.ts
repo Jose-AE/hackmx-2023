@@ -1,10 +1,10 @@
 export default interface IMainTable {
-  date: Date;
+  date: string;
   sequia_leve: number;
   sequia_moderada: number;
   sequia_grave: number;
   exportaciones_miles_dolares: number;
-  evento_violencia: boolean;
+  evento_violencia: string;
   precio_promedio: number;
   total_vendido_US: number;
 }
