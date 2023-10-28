@@ -1,20 +1,20 @@
-"use client"
-import React, { useState } from 'react';
-import axios from 'axios';
+"use client";
+import React, { useState } from "react";
+import axios from "axios";
+import IApiResponse from "@/Interfaces/IApiResponse";
 
 const MyComponent: React.FC = () => {
-  const [message, setMessage] = useState('');
-  const [response, setResponse] = useState('');
+  const [message, setMessage] = useState("");
+  const [response, setResponse] = useState<IApiResponse>();
 
   const handleRequest = async () => {
     try {
-      const apiResponse = await axios.post('/api/query', { message });
+      const apiResponse = await axios.post("/api/query", { message });
       setResponse(apiResponse.data);
     } catch (error) {
-      console.error('Error al realizar la solicitud a la API:', error);
+      console.error("Error al realizar la solicitud a la API:", error);
     }
   };
-  
 
   return (
     <div>
@@ -30,9 +30,8 @@ const MyComponent: React.FC = () => {
       <button onClick={handleRequest}>Enviar Consulta</button>
       {response && (
         <div>
-          
           <p>Respuesta de la API:</p>
-          <pre>{response}</pre>
+          <pre>{response.content}</pre>
         </div>
       )}
     </div>
@@ -40,4 +39,3 @@ const MyComponent: React.FC = () => {
 };
 
 export default MyComponent;
-
