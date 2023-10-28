@@ -1,7 +1,4 @@
 // num vs num
-
-import ITable from "@/Interfaces/ITable";
-
 import React from "react";
 import {
   Chart as ChartJS,
@@ -12,6 +9,7 @@ import {
   Legend,
 } from "chart.js";
 import { Scatter } from "react-chartjs-2";
+import IMainTable from "@/Interfaces/IMainTable";
 
 ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend);
 
@@ -28,15 +26,15 @@ export default function Scatterplot({
   col1,
   col2,
 }: {
-  table: ITable;
+  table: any;
   col1: string;
   col2: string;
 }) {
   const data = {
     datasets: [
       {
-        label: "A dataset",
-        data: table?.data.map((item) => ({
+        label: `${col1} vs ${col2}`,
+        data: table.map((item: any) => ({
           x: parseFloat(item[col1]),
           y: parseFloat(item[col2]),
         })),

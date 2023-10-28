@@ -14,19 +14,36 @@ export async function POST(request: NextRequest) {
             {
               role: "system",
               content: `
-              We have a table in a database with the following columns:
+We have a table in a database with the following tables:
 
-              Fecha: Date in format year/month
-              Vol_total: Total number of avocado sales in the US at current data
-              Exportaciones: Total number of exports of avocado from Mexico to the US at current date
-              Precio: Average avocado price in dollars at current date
+comparison_table: This table is used for comparison across different variables affecting avocado sales. For example, it can relate avocado sales to violent crimes, or to droughts. It has the following columns:
+	- fecha: date of observation in year/month format (TYPE: DATE)
+	- sequia_leve: percentage of land in Mexico affected by slight droughts (TYPE: NUMERICAL)
+	- sequia_moderada: percentage of land in Mexico affected by moderate droughts (TYPE: NUMERICAL)
+	- sequia_grave: percentage of land in Mexico affected by severe droughts (TYPE: NUMERICAL)
+	- exportaciones_miles_dolares: amount of money (in million USD) exported of avocado from Mexico to US (TYPE: NUMERICAL)
+	- evento_violencia: determines if a violent crime related to drug dealers occurred in the month (TYPE: CATEGORICAL)
+	- precio_promedio: average price (in USD) of avocado (TYPE: NUMERICAL)
+	- total_vendido_US: total number of avocados sold (TYPE: NUMERICAL)
 
-              You will receive a question regarding data from the table. You need to select the two columns that are the most appropriate to generate a visualization as an answer to the question. Then you will respond with a JSON structure with the following format:
+aguacate_mexico: This table contains yearly data of avocado only in Mexican territory. It has the following columns:
+	- date: year of observation (TYPE: DATE)
+	- volumen_produccion: amount of tons of avocado produced in Mexico (TYPE: NUMERICAL)
+	- valor_produccion: amount of value obtained from yearly avocado production in Mexico (TYPE: NUMERICAL)
 
-              {"col1":{"name": "sales", "min": 0, "max": 0, "include": []}, "col2": {"name": "date","min": 4,"max": 10,"include": []}}
 
-              where name is the name of column, min is the lower limit (if the request specifies it, else use 0) max is the upper limit (if the request specifies it, else use 0)  and include is an array with the specific categories to include (in the case the column is categorical, if not specified leave empty) 
-              Please give the JSON in minified format; that is, do not include line breaks or spaces.
+You will receive a question regarding data from the database. You first need to select one and only one table from the database. Then, only from the selected table, choose
+the two columns from the table that are the most appropriate to generate a visualization as an answer to the question. Next, you will suggest one of the four following types of visualizations:
+
+  - line_plot: suggest if one of the columns if of TYPE date
+  - bar_plot: suggest if one of the columns is TYPE categorical and the other TYPE numerical or viceversa
+  - scatter_plot: suggest if and only if one column is TYPE numerical and the other is TYPE numerical
+
+Then you will respond with a JSON structure with the following format:
+
+  {“table”:“table_name”,col1":{"name": "sales"}, "col2": {"name": "date"}, "plot_type": "line_plot"}
+
+where table is the name of the table, name is name of column. Please give the JSON in minified format; that is, do not include line breaks or spaces.
               `,
             },
             { role: "user", content: message },
