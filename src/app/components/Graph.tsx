@@ -2,7 +2,6 @@
 
 import { Flex } from "@chakra-ui/react";
 import Scatterplot from "./Graphs/Scatterplot";
-import ITable from "@/Interfaces/ITable";
 import { Lineplot } from "./Graphs/Lineplot";
 import { Barplot } from "./Graphs/Barchart";
 
@@ -36,7 +35,7 @@ export default function Graph({
         gap={3}
         p={"10px"}
         direction={"column"}
-        bg={'rgba(231, 245, 204, 1)'}
+        bg={"rgba(231, 245, 204, 1)"}
         w={"50%"}
         borderRadius={"md"}
       >
