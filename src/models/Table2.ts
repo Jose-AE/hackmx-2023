@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 
 const mainTableSchema = new Schema({
-  year: Number,
+  date: String,
   volumen_produccion: Number,
   valor_produccion: Number,
 });

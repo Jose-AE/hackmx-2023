@@ -143,9 +143,8 @@ export async function GET(request: NextRequest) {
 
     for (const line of lines) {
       const data = line.split(",");
-
       Table2.create({
-        year: parseFloat(data[0]),
+        date: data[0],
         volumen_produccion: parseFloat(data[1]),
         valor_produccion: parseFloat(data[2]),
       });
