@@ -68,7 +68,7 @@ const MyComponent: React.FC<{
 
         <br />
         <Button
-          isDisabled={requestLoading}
+          isLoading={requestLoading}
           onClick={handleRequest}
           style={{
             backgroundColor: "#61B624", // Color de fondo
