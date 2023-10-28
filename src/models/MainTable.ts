@@ -1,17 +1,17 @@
 import mongoose, { Schema } from "mongoose";
 
 const mainTableSchema = new Schema({
-  date: Date,
-  sequia_leve: [Number],
-  sequia_moderada: [Number],
-  sequia_grave: [Number],
-  exportaciones_miles_dolares: [Number],
-  evento_violencia: [Boolean],
-  precio_promedio: [Number],
-  total_vendido_US: [Number],
+  date: String,
+  sequia_leve: Number,
+  sequia_moderada: Number,
+  sequia_grave: Number,
+  exportaciones_miles_dolares: Number,
+  evento_violencia: String,
+  precio_promedio: Number,
+  total_vendido_US: Number,
 });
 
 const MainTable =
-  mongoose.models.Post || mongoose.model("MainTable", mainTableSchema);
+  mongoose.models.maintable || mongoose.model("maintable", mainTableSchema);
 
 export default MainTable;
