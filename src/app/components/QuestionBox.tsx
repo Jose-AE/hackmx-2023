@@ -3,14 +3,23 @@ import React, { useState } from "react";
 import axios from "axios";
 import IApiResponse from "@/Interfaces/IApiResponse";
 
-const MyComponent: React.FC = () => {
+const MyComponent: React.FC<{
+  setSelectedTable: any;
+  setCol1: any;
+  setCol2: any;
+}> = ({ setSelectedTable, setCol1, setCol2 }) => {
   const [message, setMessage] = useState("");
   const [response, setResponse] = useState<IApiResponse>();
 
   const handleRequest = async () => {
     try {
       const apiResponse = await axios.post("/api/query", { message });
+      const content = JSON.parse(apiResponse.data.content);
+      setSelectedTable(content.table);
+      setCol1(content.col1.name);
+      setCol2(content.col2.name);
       setResponse(apiResponse.data);
+      console.log(content);
     } catch (error) {
       console.error("Error al realizar la solicitud a la API:", error);
     }
@@ -28,12 +37,12 @@ const MyComponent: React.FC = () => {
       />
       <br />
       <button onClick={handleRequest}>Enviar Consulta</button>
-      {response && (
+      {/* {response && (
         <div>
           <p>Respuesta de la API:</p>
           <pre>{response.content}</pre>
         </div>
-      )}
+      )} */}
     </div>
   );
 };
