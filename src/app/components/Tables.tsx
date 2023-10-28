@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Badge,
   Box,
@@ -8,29 +6,38 @@ import {
   CardBody,
   CardHeader,
   Flex,
+  HStack,
   Heading,
+  List,
+  ListIcon,
+  ListItem,
+  Stack,
+  StackDivider,
+  Text,
+  VStack,
 } from "@chakra-ui/react";
-import { useRef, useState } from "react";
 import { BiPlusCircle } from "react-icons/bi";
-import Papa from "papaparse";
-import ITable from "@/Interfaces/ITable";
 
-function TableInfo({ name, cols }: { name: string; cols: string[] }) {
+function TableInfo() {
   return (
-    <Card flex="0 0 auto" m={"10px"}>
+    
+    <Card flex="0 0 auto" m={"10px"}  style={{ backgroundColor: 'rgba(125, 175, 33, 1)', color: 'black' }}
+    >
       <CardHeader pb={"0"}>
-        <Heading size="md">{name}</Heading>
+        <Heading size="md">TABLE_NAME</Heading>
       </CardHeader>
 
       <CardBody>
         <Box>
           <Heading mb={"10px"} size="xs">
-            Columns
+            Rows
           </Heading>
           <Flex maxW={"250px"} flexWrap="wrap" gap={"5px"}>
-            {cols.map((colName: string, i: number) => (
-              <Badge key={i}>{colName}</Badge>
-            ))}
+            <Badge>ROW_NAME</Badge>
+            <Badge>ROW_NAME</Badge>
+            <Badge>ROW_NAME</Badge>
+            <Badge>ROW_NAME</Badge>
+            <Badge>ROW_NAME</Badge>
           </Flex>
         </Box>
       </CardBody>
@@ -38,57 +45,15 @@ function TableInfo({ name, cols }: { name: string; cols: string[] }) {
   );
 }
 
-export default function Tables({
-  loadedTables,
-  setLoadedTables,
-}: {
-  loadedTables: any;
-  setLoadedTables: any;
-}) {
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
-  const handleAddTableButton = () => {
-    fileInputRef.current?.click();
-  };
-
-  const handleLoadCSV = (e: any) => {
-    const selectedFile = e.target.files[0];
-    if (selectedFile) {
-      Papa.parse(selectedFile, {
-        complete: (result) => {
-          const tableToAdd: ITable = {
-            name: selectedFile.name.slice(0, -4),
-            cols: result.meta.fields as any,
-            data: result.data as any,
-          };
-
-          //add table to loaded tables
-          setLoadedTables((prevArray: ITable[]) => [...prevArray, tableToAdd]);
-          //console.log("Parsed Result:", tableToAdd);
-        },
-        header: true,
-      });
-
-      // You can perform further actions with the selected file here
-    }
-  };
-
+export default function Tables() {
   return (
     <>
-      <input
-        type="file"
-        accept=".csv"
-        ref={fileInputRef}
-        style={{ display: "none" }}
-        onChange={handleLoadCSV}
-      />
-
+    <img src="https://png.pngtree.com/background/20210715/original/pngtree-green-simple-avocado-background-picture-image_1290601.jpg" alt="Descripción de la imagen" />
       <Flex direction={"column"}>
         <Button
-          onClick={handleAddTableButton}
           leftIcon={<BiPlusCircle />}
           w={"150px"}
-          colorScheme="green"
+          color="rgba(96, 153, 62, 1)          "
           mb={"10px"}
         >
           Add Table
@@ -96,7 +61,7 @@ export default function Tables({
         <Flex
           borderWidth={"5px"}
           direction={"row"}
-          bg={"gray.100"}
+          bg="rgba(150, 98, 13, 1)"
           borderRadius={"md"}
           h={"200px"}
           w={"100%"}
@@ -104,9 +69,14 @@ export default function Tables({
           overflowY={"hidden"}
           whiteSpace={"nowrap"}
         >
-          {loadedTables.map((table: ITable, i: number) => (
-            <TableInfo key={i} cols={table.cols} name={table.name} />
-          ))}
+          <TableInfo />
+          <TableInfo />
+          <TableInfo />
+          <TableInfo />
+          <TableInfo />
+          <TableInfo />
+          <TableInfo />
+          <TableInfo />
         </Flex>
       </Flex>
     </>

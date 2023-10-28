@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 
 import { Flex } from "@chakra-ui/react";
 import Scatterplot from "./Graphs/Scatterplot";
@@ -36,7 +36,7 @@ export default function Graph({
         gap={3}
         p={"10px"}
         direction={"column"}
-        bg={"gray.100"}
+        bg={'rgba(231, 245, 204, 1)'}
         w={"50%"}
         borderRadius={"md"}
       >
