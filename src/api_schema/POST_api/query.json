@@ -1,0 +1,14 @@
+{
+  "col1": {
+    "name": "sales",
+    "min": 0,
+    "max": 0,
+    "include": []
+  },
+  "col2": {
+    "name": "date",
+    "min": 2003,
+    "max": 2010,
+    "include": []
+  }
+}
