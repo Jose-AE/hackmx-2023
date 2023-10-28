@@ -17,11 +17,17 @@ export default function Home() {
   const [plotType, setPlotType] = useState<string | null>(null);
 
   const [mainTable, setMainTable] = useState<any>(null);
+  const [table2, setTable2] = useState<any>(null);
 
   async function getTable() {
     const res = await fetch("/api/main-table");
     const table = await res.json();
+
+    const res2 = await fetch("/api/tabla-2");
+    let table2 = await res2.json();
+    table2 = table2.sort((a: any, b: any) => a["date"] - b["date"]);
     setMainTable(table);
+    setTable2(table2);
   }
 
   //for testting
@@ -31,6 +37,7 @@ export default function Home() {
 
   const db = {
     comparison_table: mainTable,
+    aguacate_mexico: table2,
   };
 
   return (

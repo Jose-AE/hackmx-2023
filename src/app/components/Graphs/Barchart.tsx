@@ -27,7 +27,7 @@ export const options = {
     },
     title: {
       display: true,
-      text: "Chart.js Bar Chart",
+      text: "Comparación Categórica",
     },
   },
 };
@@ -68,7 +68,7 @@ export function Barplot({
     labels,
     datasets: [
       {
-        label: "Dataset 1",
+        label: `Media ${col2} por ${col1}`,
         data: means,
         backgroundColor: "rgba(255, 99, 132, 0.5)",
       },

@@ -29,7 +29,7 @@ export const options = {
     },
     title: {
       display: true,
-      text: "Chart.js Line Chart",
+      text: "Serie de Tiempo",
     },
   },
 };
@@ -44,7 +44,7 @@ export function Lineplot({
   col2: string;
 }) {
   // Swap col1 and col2 if col2 is date
-  if (col2 == "fecha") {
+  if (col2 == "fecha" || col2 == "date") {
     [col1, col2] = [col2, col1];
   }
 
@@ -54,7 +54,7 @@ export function Lineplot({
     labels,
     datasets: [
       {
-        label: "Dataset 1",
+        label: `${col2} a través del tiempo`,
         data: table.map((item: any) => parseFloat(item[col2])),
         borderColor: "rgb(255, 99, 132)",
         backgroundColor: "rgba(255, 99, 132, 0.5)",
