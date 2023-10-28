@@ -4,6 +4,7 @@ import { Flex } from "@chakra-ui/react";
 import Scatterplot from "./Graphs/Scatterplot";
 import ITable from "@/Interfaces/ITable";
 import { Lineplot } from "./Graphs/Lineplot";
+import { Barplot } from "./Graphs/Barchart";
 
 export default function Graph({
   table,
@@ -22,6 +23,9 @@ export default function Graph({
     }
     if (type == "scatter_plot") {
       return <Scatterplot table={table} col1={col1} col2={col2} />;
+    }
+    if (type == "bar_plot") {
+      return <Barplot table={table} col1={col1} col2={col2} />;
     }
   }
 

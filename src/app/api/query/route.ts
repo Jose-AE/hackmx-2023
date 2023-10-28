@@ -36,8 +36,8 @@ You will receive a question regarding data from the database. You first need to 
 the two columns from the table that are the most appropriate to generate a visualization as an answer to the question. Next, you will suggest one of the four following types of visualizations:
 
   - line_plot: suggest if one of the columns if of TYPE date
-  - box_plot: suggest if one of the columns is TYPE categorical and the other TYPE numerical
-  - scatter_plot: suggest if and only if both columns are TYPE numerical
+  - bar_plot: suggest if one of the columns is TYPE categorical and the other TYPE numerical
+  - scatter_plot: suggest if and only if one column is TYPE numerical and the other is TYPE numerical
 
 Then you will respond with a JSON structure with the following format:
 
