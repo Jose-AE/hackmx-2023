@@ -1,66 +1,66 @@
-import React, { useEffect, useRef } from "react";
-import Chart from "chart.js/auto";
-import data from "./data.json";
+import React from "react";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { Line } from "react-chartjs-2";
 
-function LinePlot() {
-  const chartRef = useRef(null);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
-  useEffect(() => {
-    const ctx = chartRef.current.getContext("2d");
+export const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: "top" as const,
+    },
+    title: {
+      display: true,
+      text: "Chart.js Line Chart",
+    },
+  },
+};
 
-    if (chartRef.current.chart) {
-      chartRef.current.chart.destroy();
-    }
+export function Lineplot({
+  table,
+  col1,
+  col2,
+}: {
+  table: any;
+  col1: string; // Date column
+  col2: string;
+}) {
+  // Swap col1 and col2 if col2 is date
+  if (col2 == "fecha") {
+    [col1, col2] = [col2, col1];
+  }
 
-    const labels = data.items.map((item) => item.name);
-    const values = data.items.map((item) => item.value);
+  const labels = table.map((item) => item["date"]);
 
-    const newChart = new Chart(ctx, {
-      type: "line",
-      data: {
-        labels: labels,
-        datasets: [
-          {
-            label: "Valores",
-            data: values,
-            borderColor: "rgba(75, 192, 192, 1)",
-            borderWidth: 2,
-          },
-        ],
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: "Dataset 1",
+        data: table.map((item) => parseFloat(item[col2])),
+        borderColor: "rgb(255, 99, 132)",
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
       },
-      options: {
-        maintainAspectRatio: false, // Deshabilita el ajuste automático del tamaño
-        responsive: true, // Permite que el gráfico sea responsive
-        scales: {
-          x: {
-            title: {
-              display: true,
-              text: "Eje X",
-            },
-            min: 0,
-            max: labels.length,
-          },
-          y: {
-            title: {
-              display: true,
-              text: "Eje Y",
-            },
-            min: 0,
-            max: 10, // Establece un valor máximo deseado
-          },
-        },
-      },
-    });
+    ],
+  };
 
-    chartRef.current.chart = newChart;
-  }, []);
-
-  return (
-    <div>
-      <h1>Gráfico de Líneas</h1>
-      <canvas ref={chartRef} width="10" height="10" />
-    </div>
-  );
+  return <Line options={options} data={data} />;
 }
-
-export default LinePlot;

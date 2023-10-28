@@ -24,7 +24,7 @@ comparison_table: This table is used for comparison across different variables a
 	- exportaciones_miles_dolares: amount of money (in million USD) exported of avocado from Mexico to US (TYPE: NUMERICAL)
 	- evento_violencia: determines if a violent crime related to drug dealers occurred in the month (TYPE: CATEGORICAL)
 	- precio_promedio: average price (in USD) of avocado (TYPE: NUMERICAL)
-	- volumen_total: total number of avocados sold (TYPE: NUMERICAL)
+	- total_vendido_US: total number of avocados sold (TYPE: NUMERICAL)
 
 aguacate_mexico: This table contains yearly data of avocado only in Mexican territory. It has the following columns:
 	- año: year of observation (TYPE: DATE)

@@ -14,6 +14,7 @@ export default function Home() {
   const [selectedTable, setSelectedTable] = useState<string | null>(null);
   const [col1, setCol1] = useState<string | null>(null);
   const [col2, setCol2] = useState<string | null>(null);
+  const [plotType, setPlotType] = useState<string | null>(null);
 
   const [mainTable, setMainTable] = useState<any>(null);
 
@@ -41,10 +42,16 @@ export default function Home() {
             setSelectedTable={setSelectedTable}
             setCol1={setCol1}
             setCol2={setCol2}
+            setPlotType={setPlotType}
           />
 
           {selectedTable && col1 && col2 ? (
-            <Graph table={db[selectedTable]} col1={col1} col2={col2} />
+            <Graph
+              table={db[selectedTable]}
+              col1={col1}
+              col2={col2}
+              type={plotType}
+            />
           ) : (
             <Flex
               borderWidth={"5px"}
