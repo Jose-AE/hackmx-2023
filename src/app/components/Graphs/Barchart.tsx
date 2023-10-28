@@ -46,7 +46,7 @@ export function Barplot({
     [col1, col2] = [col2, col1];
   }
 
-  const labels = [...new Set(table.map((item: any) => item[col1]))];
+  const labels: string[] = [...new Set(table.map((item: any) => item[col1]))];
   let agg_sums: any = [];
   let counts: any = [];
   table.forEach((item: any) => {
