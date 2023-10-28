@@ -48,14 +48,14 @@ export function Lineplot({
     [col1, col2] = [col2, col1];
   }
 
-  const labels = table.map((item) => item["date"]);
+  const labels = table.map((item: any) => item["date"]);
 
   const data = {
     labels,
     datasets: [
       {
         label: "Dataset 1",
-        data: table.map((item) => parseFloat(item[col2])),
+        data: table.map((item: any) => parseFloat(item[col2])),
         borderColor: "rgb(255, 99, 132)",
         backgroundColor: "rgba(255, 99, 132, 0.5)",
       },

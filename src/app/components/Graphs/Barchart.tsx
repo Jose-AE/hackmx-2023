@@ -46,10 +46,10 @@ export function Barplot({
     [col1, col2] = [col2, col1];
   }
 
-  const labels = [...new Set(table.map((item) => item[col1]))];
-  let agg_sums = [];
-  let counts = [];
-  table.forEach((item) => {
+  const labels = [...new Set(table.map((item: any) => item[col1]))];
+  let agg_sums: any = [];
+  let counts: any = [];
+  table.forEach((item: any) => {
     if (agg_sums[labels.indexOf(item[col1])]) {
       agg_sums[labels.indexOf(item[col1])] += parseFloat(item[col2]);
       counts[labels.indexOf(item[col1])] += 1;
@@ -59,8 +59,8 @@ export function Barplot({
     }
   });
 
-  let means = [];
-  agg_sums.forEach((item, index) => {
+  let means: any = [];
+  agg_sums.forEach((item: any, index: any) => {
     means[index] = item / counts[index];
   });
 

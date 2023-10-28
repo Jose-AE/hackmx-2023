@@ -15,7 +15,7 @@ export default function Graph({
   table: any;
   col1: string;
   col2: string;
-  type: string;
+  type: any;
 }) {
   function getGraphElement() {
     if (type == "line_plot") {
