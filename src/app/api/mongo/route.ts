@@ -119,6 +119,8 @@ const csv2 = `
 `;
 
 export async function GET(request: NextRequest) {
+  if (true) return; //only truen when want to create data
+
   try {
     await ConnectToMongoDB();
 
